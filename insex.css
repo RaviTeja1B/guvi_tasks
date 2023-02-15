@@ -1,0 +1,34 @@
+.head_style{
+    background-color: azure;
+    color: blue;
+    border-color: bisque;
+    padding:6px;
+    text-align: center;
+}
+.container_1{
+    border: 2px solid green;
+    width: 100%;
+    margin: 5px;
+    padding:5px;
+
+}
+.http1_style{
+    border: 2px red solid;
+    width: 50%;
+    margin: 10px;
+
+}
+.http2_style{
+    border: 2px red solid;
+    width: 50%;
+    margin:10px
+    
+}
+.tab1{
+    border: 10px solid blue;
+}
+.image1{
+    height:20%;
+    width:50%;
+    
+}

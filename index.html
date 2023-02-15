@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day1Task</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+      integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="./insex.css" />
+  </head>
+  <body>
+    <h1 class="head_style">HTTP1.1 and HTTP2</h1>
+<div>
+    <h2 class="m-3">The Hypertext transfer Protocol (http) is used to transfer resource over the web</h2>
+    <div class="text-center">
+    <img class="image1" src="https://th.bing.com/th/id/R.fa4aec6e55e0fa4570c159ffd5609e67?rik=TM9K%2bFHxYlmLTA&riu=http%3a%2f%2fwww.simplynotes.in%2fwp-content%2fuploads%2f2016%2f04%2fhttp_001-1.jpg&ehk=hRO4tTRqZfSZxE%2fZ%2bsqHJmkR9zmlo5F8q6Bs9yuSmNI%3d&risl=&pid=ImgRaw&r=0" alt="">
+   </div>
+    <p class="m-3 p-1">
+      HTTP stands for hypertext transfer protocol & it is used in client-server
+      communication.<br />
+      By using HTTP user sends the request to the server & the server sends the
+      response to the user. <br />
+      There are several stages of development of HTTP but we will focus mainly
+      on HTTP/1.1 which was created in 1997 & the new one is HTTP/2 which was
+      created in 2015.
+    </p>
+</div>
+    <script src="./index.js"></script>
+    <div
+      class="constainer_1 d-flex flex-row justify-content-center text-center"
+    >
+      <div class="http1_style">
+        <h1>HTTP1.1</h1>
+        <p>
+          Previously, HTTP/1.1 was the major version of HTTP network protocol
+          used by the World Wide Web, implemented across clients and servers.
+          That worked well for 15 years. But as modern day applications and
+          websites evolved and the amount of data to be loaded on a single page
+          increased, the shortcomings of HTTP/1.1 became more prominent.
+        </p>
+      </div>
+      <div class="http2_style">
+        <h1>HTTP2</h1>
+        <p>
+          HTTP/2 was built over Google’s SPDY protocol kept in mind the
+          disadvantages of HTTP/1.1.
+        </p>
+      </div>
+    </div>
+    <table border="3" class="m-5 p-5 border tab1">
+      <thead>
+        <th>s.no</th>
+        <th>http1.1</th>
+        <th>http2</th>
+      </thead>
+      <tr>
+        <td>1</td>
+        <td>It works on the textual format.</td>
+        <td>It works on the binary protocol</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>
+          There is head of line blocking that blocks all the requests behind it
+          until <br> it doesn’t get its all resources.
+        </td>
+        <td>
+          It allows multiplexing so one TCP connection is required for multiple
+          requests.
+        </td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>
+          It uses requests resource Inlining for use getting multiple pages
+        </td>
+        <td>It uses PUSH frame by server that collects all multiple pages</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>It compresses data by itself.</td>
+        <td>It uses HPACK for data compression.</td>
+      </tr>
+    </table>
+
+<nav>
+    <a href="./obj.html">Click for Object Reprasentation</a>
+</nav>
+
+    
+  </body>
+</html>

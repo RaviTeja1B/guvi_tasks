@@ -17,7 +17,10 @@ let mobiles=[
     ]
      console.table(mobiles)
     
-    
+    mobiles.forEach((ele)=>{
+        console.table(`Mobile Brand Of  ${ele.brand}`)
+
+    })
     for (let i in mobiles){
         console.log(mobiles[i].brand)
         console.log(mobiles[i].color)

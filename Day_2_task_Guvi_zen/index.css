@@ -1,0 +1,30 @@
+.bg_image{
+    background-image: url(https://loctruth.com/wp-content/uploads/2020/08/Product_Diagram-1536x922.png);
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+  
+  }
+  .hd_color{
+    color: brown;
+    text-align: center;
+  }
+  .img_size{
+    width: 200px;
+    height: 100px;
+  }
+  .text_margin{
+    margin: 10px;
+  }
+  .container_color{
+    background-color: rgb(63, 207, 83);
+    width: 800px;
+    border-radius: 80px;
+    padding: 16px;
+    margin: 30px;
+    border-color: rgb(94, 94, 138);
+    border-style: solid;
+    border-width: 30;
+    
+  
+  }

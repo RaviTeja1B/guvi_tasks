@@ -17,7 +17,16 @@ console.log(flags)
 //Loop throigh the data and print it on the console
 for(let i=0;i<data.length;i++){
     console.log(`Flag  ${data[i].flags.png}
-   `)}
+    
+   `)
+   let div1=document.createElement("div")
+   document.body.appendChild(div1)
+   let image=document.createElement("img")
+   image.src=data[i].flags.png
+   div1.appendChild(image)
+    let countryName=document.createElement("p")
+    div1.appendChild(countryName)
+     countryName.innerText=data[i].name.common}
 for (let j in data){
     console.log(`Flag in ${data[j].flags.svg}
    `)}
@@ -31,6 +40,8 @@ data.forEach(element => {
     console.log(`Sub-Region is:- ${element.subregion}`)
     console.log(`population is :- ${element.population}`)
 });
+
+
 }
     //send the request
 //destructuring

@@ -76,9 +76,9 @@ let mobiles=[
     let resume_1=
     [
     {
-       name:[{ first_name: "Ravi",
-        middle_name: "Teja",
-        sur_name: "Morampudi"},
+       details:[{ first_name: "Ravi",
+              middle_name: "Teja",
+              sur_name: "Morampudi"},
         {age:28},
         {gender:"male"},
         {D_of_B:"15-sep-1994"},]
@@ -132,7 +132,7 @@ let mobiles=[
     ]
     
     console.table(resume_1)
-    console.log(resume_1[0].name[0].middle_name)
+    console.log(resume_1[0].details[0].middle_name)
     console.log(resume_1[1].gmail[0])
     console.log(resume_1[1].gmail[0].personal)
     console.log(resume_1[1].gmail[1])
@@ -144,3 +144,38 @@ let mobiles=[
     console.log(resume_1[5].skills.Designing)
     console.log(resume_1[5].skills.programing)
     console.log(resume_1[5].skills.Designing[2])
+//object destructuring
+let [BasicDetails,Mail,Cellphone,address1,qualification,talent]=resume_1
+console.table(BasicDetails)
+console.table(talent)
+let{details}=BasicDetails
+console.log(details)
+console.table(details)
+let [name1,userage,usergender,userdob]=details
+console.log(name1)
+console.log(name1)
+let{first_name,middle_name,sur_name}=name1
+console.log(sur_name)
+let {skills}=talent
+console.table(skills)
+let {programing,Designing}=skills
+console.log(programing)
+console.log(Designing)
+    
+
+
+
+//object destructuring
+let person1={
+    firstName:"ravi",
+    secondName:"teja",
+    age:178,
+    phone:[08676236085,8143862022]
+}
+console.log(person1)
+let {firstName,secondName,age,phone}=person1
+console.log(firstName)
+console.log(phone)
+let [land,mobile]=phone
+console.log(mobile)
+

@@ -29,6 +29,7 @@ data.forEach(element => {
     console.log(`Name of the country is :- ${element.name.common}`)
     console.log(`Reagion is:- ${element.region}`)
     console.log(`Sub-Region is:- ${element.subregion}`)
+    console.log(`population is :- ${element.population}`)
 });
 }
     //send the request

@@ -174,4 +174,4 @@ function capitalize(arr1,arr2,...arr3){
    let num11=[5,6,5]
    let num12=[5,8]
    console.log(findMedianSortedArrays(num11,num12))
-   //
+   //    

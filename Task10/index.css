@@ -1,0 +1,26 @@
+/* Add your custom CSS styles */
+body {
+    background-color: #f0f0f0;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#countdown {
+    margin-top: 20px;
+}
+
+/* Custom styles for countdown */
+.display-4 {
+    color: #333;
+}
+
+.display-1.text-danger {
+    font-size: 72px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}

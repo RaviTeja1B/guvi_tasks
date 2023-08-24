@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SurveyForm</title>
+   
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</head>
+<body>
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand">Survey Form</a>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+</nav>
+
+<section  class="display1"></section>
+
+<form action="">
+  <section class="one1">
+    <div  class="container1">
+      <div class=" row">
+       <div class=" name col-md-6">
+         <div class="form-group">
+          <label for="firstname" class="form-label">First Name</label>
+          <label for="star" style="color: brown;"><strong>*</strong></label> 
+          <input type="text" class="form-control" id="firstname" value="Enter Your Name">
+         </div>
+       </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="one2">
+    <div  class="container2">
+      <div class=" row">
+        <div class="col-md-6">
+          <label for="lastname" class="form-label">Last Name</label>
+          <label for="star" style="color: brown;"><strong>*</strong></label> 
+          <input type="text" class="form-control" id="lastname" value=" Enter Your last Name">
+        </div>
+      </div>
+    </div> 
+  </section>
+
+  <section class="one3">
+    <div  class="container3">
+      <div class=" row">
+        <div class="col-md-6">
+          <label for="mail" class="form-label"> Email</label>
+          <label for="star" style="color: brown;"><strong>*</strong></label> 
+          <input type="mail" class="form-control" id="mail"  name="mail"value="User Email">
+        </div>
+      </div>
+    </div> 
+  </section>
+
+
+  <section class="one4">
+    <div  class="container4">
+      <div class="row">
+        <div class="col-md-6">
+        <h6>Choose your Cource</h6>
+        <input type="checkbox" id="coding" name="interest" value="coding" checked>
+         <label for="coding">Pythan</label>
+        <input type="checkbox" id="music" name="interest" value="music">
+        <label for="music">Java</label>
+       </div>
+      </div>
+    </div> 
+  </section>
+
+<section class="one5">
+  <div  class="container5">
+   <div class="row">
+    <table style="width:100% col-4 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+     <tr>
+        <th></th>
+        <th>Very Unsatisfied</th>
+        <th>Unsatisfied</th>
+        <th>Neutral</th>
+        <th>Satisfied</th>
+        <th>Very Satisfied</th>
+    </tr>
+    <tr>
+        <td style="text-align : left">Purchase</td>
+        <td><input type="radio" id="Veryunsatisfied" name="rating1" value="VeryUnsatisfied"></td>
+        <td><input type="radio" id="Unsatisfied" name="rating1" value="Unsatisfied"></td>
+        <td><input type="radio" id="Neutral" name="rating1" value="Neutral"></td>
+        <td><input type="radio" id="Satisfied" name="rating1" value="Satisfied"></td>
+        <td><input type="radio" id="Verysatisfied" name="rating1" value="Verysatisfied"></td>
+    </tr>
+    <tr>
+        <td style="text-align : left">Service</td>
+        <td><input type="radio" id="Veryunsatisfied" name="rating2" value="VeryUnsatisfied"></td>
+        <td><input type="radio" id="Unsatisfied" name="rating2" value="Unsatisfied"></td>
+        <td><input type="radio" id="Neutral" name="rating2" value="Neutral"></td>
+        <td><input type="radio" id="Satisfied" name="rating2" value="Satisfied"></td>
+        <td><input type="radio" id="Verysatisfied" name="rating2" value="Verysatisfied"></td>
+    </tr>
+    <tr>
+        <td style="text-align : left">Company Overall</td>
+        <td><input type="radio" id="Veryunsatisfied" name="rating3" value="VeryUnsatisfied"></td>
+        <td><input type="radio" id="Unsatisfied" name="rating3" value="Unsatisfied"></td>
+        <td><input type="radio" id="Neutral" name="rating3" value="Neutral"></td>
+        <td><input type="radio" id="Satisfied" name="rating3" value="Satisfied"></td>
+        <td><input type="radio" id="Verysatisfied" name="rating3" value="Verysatisfied"></td>
+    </tr>
+   </div>
+
+ </div>
+</table>
+</section>
+
+<section class="one6">
+<div class="form-floating">
+  <div class="row">
+    <div class="col-md-6">
+  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+  <label for="floatingTextarea2">Comments</label>
+  </div>
+ </div>
+ </div>
+
+ <section class="one7">
+  <button type="button" class="btn btn-secondary">Secondary</button>
+</section>
+</section>
+</body>
+</html>

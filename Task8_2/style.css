@@ -1,0 +1,44 @@
+body {
+    background-color: rgb(180, 194, 180, 0.8);
+}
+
+.ttl {
+    background-color: rgb(61, 75, 83);
+    padding: 10px 0px;
+    color: whitesmoke;
+    letter-spacing: 5px;
+}
+
+.big-vertical-green-box {
+    height: 80vh;
+    background-color: rgb(50, 51, 50);
+    border-radius: 30px;
+}
+
+.txt {
+    margin: 0px 220px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    width: 600px;
+    background-color: rgb(50, 51, 50);
+    color: wheat;
+    font-family: verdana;
+    font-size: 18px;
+    letter-spacing: 4px;
+}
+
+.small-green-card {
+    width: 30px;
+    height: 130px;
+    background-color: rgb(50, 51, 50);
+    margin: 70px 40px;
+    border-radius: 12px;
+}
+
+.big-horizontal-green-box {
+    width: 25px;
+    height: 200px;
+    margin: 32px;
+    background-color: rgb(50, 51, 50);
+    border-radius: 20px;
+}

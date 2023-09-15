@@ -1,0 +1,55 @@
+body {
+    margin: 5px;
+    padding: 5px;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background-color: #333; /* Change to your desired background color */
+    color: white;
+    font-size: large;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px; /* Adjust padding as needed */
+}
+
+label {
+    font-weight: bold;
+}
+
+.text-align {
+    font-weight: bold;
+}
+
+.display1 {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Add margin to center content vertically */
+}
+
+.Full-body {
+    max-width: 1200px; /* Adjust the maximum width as needed */
+    margin: 0 auto; /* Center content horizontally */
+    padding: 20px; /* Add padding for better spacing */
+}
+
+.one1,
+.one2,
+.one3,
+.one4,
+.one5,
+.one6,
+.one7 {
+    padding-left: 25px;
+    margin: 10px 0; /* Adjust margin as needed */
+}
+
+.btn {
+    width: 25%;
+}
+
+.name {
+    width: 25%;
+}
+
+/* Add more styles for other elements as needed */

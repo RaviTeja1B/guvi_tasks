@@ -1,0 +1,36 @@
+#title,
+#description {
+  color: rgb(240, 13, 74);
+  font-size: 3rem;
+  padding: 1rem;
+  margin: 1rem;
+  text-align: center;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    align-items: center;
+    font-size: 1.25rem;
+  }
+  button {
+    background-color: black;
+    color: white;
+    font-size: 1rem;
+    margin: 0.2rem;
+    padding: 0.8rem;
+    text-align: center;
+    border: none;
+    border-radius: 1rem;
+  }
+  thead > tr {
+    text-align: center;
+    font-size: 1.25rem;
+  }
+  tbody > tr {
+    text-align: center;
+    font-size: 1.25rem;
+    color: white;
+    background-color: black;
+    margin: 1rem;
+  }

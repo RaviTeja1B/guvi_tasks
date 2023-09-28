@@ -1,0 +1,29 @@
+/* Add your custom CSS styles here */
+
+/* Center the container */
+.container {
+    text-align: center;
+}
+
+/* Style the "BIBLE" heading */
+.bible {
+    color: #007bff; /* Bootstrap primary color */
+    margin-bottom: 20px;
+}
+
+/* Style the search form */
+form {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the displayed verse */
+#verseDisplay {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fa; /* Bootstrap light gray background color */
+}

@@ -1,0 +1,519 @@
+1)Find all the topics and tasks which are thought in the month of October
+
+db.topics.aggregate([
+    {
+        $project :{
+            'tname': 1,
+            'tasks':1,
+            'date': '$date',
+            'month' : {
+                $month: '$date'
+            },
+            'year': {
+                $year: '$date'
+            },
+            
+        }
+    },
+    {
+        $match:{
+            'month': 10,
+            'year': 2020
+        }
+    },
+    {
+        $project:{
+            'tname': 1,
+            'tasks':1,
+            'date': 1
+        }
+    }
+    
+]).pretty()
+
+o/p-{ _id: ObjectId("6273acdbff04e639c65093ca"),
+  tname: 'functions',
+  tasks: [ 'arrow', 'inline', 'IIFE' ],
+  date: 2020-10-15T00:00:00.000Z }
+{ _id: ObjectId("6273acdbff04e639c65093cb"),
+  tname: 'variables',
+  tasks: [ 'var', 'let' ],
+  date: 2020-10-16T00:00:00.000Z }
+{ _id: ObjectId("6273acdbff04e639c65093cc"),
+  tname: 'events',
+  tasks: [ 'event1', 'event2' ],
+  date: 2020-10-20T00:00:00.000Z }
+{ _id: ObjectId("6273acdbff04e639c65093cd"),
+  tname: 'crud',
+  tasks: [ 'create', 'update', 'insert' ],
+  date: 2020-10-25T00:00:00.000Z }
+{ _id: ObjectId("6273acdbff04e639c65093d1"),
+  tname: 'css',
+  tasks: [ 'css1', 'css2' ],
+  date: 2020-10-26T00:00:00.000Z }
+{ _id: ObjectId("6273acdbff04e639c65093d2"),
+  tname: 'bootstrap',
+  tasks: [ 'container', 'rwd' ],
+  date: 2020-10-18T00:00:00.000Z }
+{ _id: ObjectId("6273acdbff04e639c65093d3"),
+  tname: 'react',
+  tasks: [ 'components', 'class' ],
+  date: 2020-10-27T00:00:00.000Z }
+==================================================================================================
+2) Find all the company drives which appeared between 15 oct-2020 and 31-oct-2020
+
+db.company_drives.aggregate([
+    {
+       $project:{
+           'cname': '$cname',
+           'date': 1,
+           'day': { $dayOfMonth : '$date'},
+           'month': {$month : '$date'},
+           'year': {$year: '$date'}
+       }
+    },
+    {
+        $match: {
+            'year':{
+                $eq : 2020
+            },
+            'month':{
+                $eq : 10
+            },
+            'day': {
+                $gte: 15,
+                $lte:31
+            }
+        }
+    },
+    {
+        $project: {
+            'cname': 1,
+            'date': 1
+        }
+    }
+
+]).pretty();
+
+o/p:{ _id: ObjectId("6273b5c5ff04e639c65093d4"),
+  date: 2020-10-15T00:00:00.000Z,
+  cname: 'google' }
+{ _id: ObjectId("6273b5c5ff04e639c65093d5"),
+  date: 2020-10-20T00:00:00.000Z,
+  cname: 'hcl' }
+{ _id: ObjectId("6273b5c5ff04e639c65093d6"),
+  date: 2020-10-21T00:00:00.000Z,
+  cname: 'Wipro' }
+{ _id: ObjectId("6273b5c5ff04e639c65093d7"),
+  date: 2020-10-24T00:00:00.000Z,
+  cname: 'reliance' }
+{ _id: ObjectId("6273b5c5ff04e639c65093dc"),
+  date: 2020-10-16T00:00:00.000Z,
+  cname: 'tcs' }
+{ _id: ObjectId("6273b5c5ff04e639c65093dd"),
+  date: 2020-10-27T00:00:00.000Z,
+  cname: 'infosys' }
+================================================================================================
+
+3) Find all the company drives and students who are appeared for the placement.
+db.company_drives.aggregate([
+    {
+        $lookup: {
+            from: 'users',
+            localField: 'uids',
+            foreignField: 'uid',
+            as: 'res'
+        }
+    }
+]).pretty()
+
+o/p
+{ _id: ObjectId("6273b5c5ff04e639c65093d4"),
+  cid: 1,
+  cname: 'google',
+  uids: [ 1, 2, 3, 4, 5, 6, 7 ],
+  date: 2020-10-15T00:00:00.000Z,
+  res: 
+   [ { _id: ObjectId("62711d44e5f6ad9fac25c639"),
+       name: 'Krishna',
+       Email: 'krishna@gmail.com',
+       uid: 1 },
+     { _id: ObjectId("62711f72e5f6ad9fac25c63a"),
+       name: 'Rohit',
+       Email: 'rohit@gmail.com',
+       uid: 2 },
+     { _id: ObjectId("6271202be5f6ad9fac25c63b"),
+       name: 'Manali',
+       Email: 'manali@gmail.com',
+       uid: 3 },
+     { _id: ObjectId("6271202be5f6ad9fac25c63c"),
+       name: 'Radhika',
+       Email: 'radhika123@gmail.com',
+       uid: 4 },
+     { _id: ObjectId("6271202be5f6ad9fac25c63d"),
+       name: 'Dhiraj',
+       Email: 'dhiraj17@gmail.com',
+       uid: 5 },
+     { _id: ObjectId("6271202be5f6ad9fac25c63e"),
+       name: 'Pavitra',
+       Email: 'pavitra70@gmail.com',
+       uid: 6 },
+     { _id: ObjectId("6271202be5f6ad9fac25c63f"),
+       name: 'Shekhar',
+       Email: 'shekhar2234@gmail.com',
+       uid: 7 } ] }
+{ _id: ObjectId("6273b5c5ff04e639c65093d5"),
+  cid: 2,
+  cname: 'hcl',
+  uids: [ 3, 4, 5, 6, 9 ],
+  date: 2020-10-20T00:00:00.000Z,
+  res: 
+   [ { _id: ObjectId("6271202be5f6ad9fac25c63b"),
+       name: 'Manali',
+       Email: 'manali@gmail.com',
+       uid: 3 },
+     { _id: ObjectId("6271202be5f6ad9fac25c63c"),
+       name: 'Radhika',
+       Email: 'radhika123@gmail.com',
+       uid: 4 },
+     { _id: ObjectId("6271202be5f6ad9fac25c63d"),
+       name: 'Dhiraj',
+       Email: 'dhiraj17@gmail.com',
+       uid: 5 },
+     { _id: ObjectId("6271202be5f6ad9fac25c63e"),
+       name: 'Pavitra',
+       Email: 'pavitra70@gmail.com',
+       uid: 6 },
+     { _id: ObjectId("6271202be5f6ad9fac25c641"),
+       name: 'Mohan',
+       Email: 'mohan2020@gmail.com',
+       uid: 9 } ] }
+{ _id: ObjectId("6273b5c5ff04e639c65093d6"),
+  cid: 3,
+  cname: 'Wipro',
+  uids: [ 2, 5, 6, 8, 10 ],
+  date: 2020-10-21T00:00:00.000Z,
+  res: 
+   [ { _id: ObjectId("62711f72e5f6ad9fac25c63a"),
+       name: 'Rohit',
+       Email: 'rohit@gmail.com',
+       uid: 2 },
+     { _id: ObjectId("6271202be5f6ad9fac25c63d"),
+       name: 'Dhiraj',
+       Email: 'dhiraj17@gmail.com',
+       uid: 5 },
+     { _id: ObjectId("6271202be5f6ad9fac25c63e"),
+       name: 'Pavitra',
+       Email: 'pavitra70@gmail.com',
+       uid: 6 },
+     { _id: ObjectId("6271202be5f6ad9fac25c640"),
+       name: 'Sai',
+       Email: 'Sai1230@gmail.com',
+       uid: 8 },
+     { _id: ObjectId("6271202be5f6ad9fac25c642"),
+       name: 'Sonali',
+       Email: 'sonali3434@gmail.com',
+       uid: 10 } ] }
+{ _id: ObjectId("6273b5c5ff04e639c65093d7"),
+  cid: 4,
+  cname: 'reliance',
+  uids: [ 1, 2, 3, 4 ],
+  date: 2020-10-24T00:00:00.000Z,
+  res: 
+   [ { _id: ObjectId("62711d44e5f6ad9fac25c639"),
+       name: 'Krishna',
+       Email: 'krishna@gmail.com',
+       uid: 1 },
+     { _id: ObjectId("62711f72e5f6ad9fac25c63a"),
+       name: 'Rohit',
+       Email: 'rohit@gmail.com',
+       uid: 2 },
+     { _id: ObjectId("6271202be5f6ad9fac25c63b"),
+       name: 'Manali',
+       Email: 'manali@gmail.com',
+       uid: 3 },
+     { _id: ObjectId("6271202be5f6ad9fac25c63c"),
+       name: 'Radhika',
+       Email: 'radhika123@gmail.com',
+       uid: 4 } ] }
+{ _id: ObjectId("6273b5c5ff04e639c65093d8"),
+  cid: 5,
+  cname: 'apple',
+  uids: [ 4, 6, 8, 9 ],
+  date: 2020-10-01T18:30:00.000Z,
+  res: 
+   [ { _id: ObjectId("6271202be5f6ad9fac25c63c"),
+       name: 'Radhika',
+       Email: 'radhika123@gmail.com',
+       uid: 4 },
+     { _id: ObjectId("6271202be5f6ad9fac25c63e"),
+       name: 'Pavitra',
+       Email: 'pavitra70@gmail.com',
+       uid: 6 },
+     { _id: ObjectId("6271202be5f6ad9fac25c640"),
+       name: 'Sai',
+       Email: 'Sai1230@gmail.com',
+       uid: 8 },
+     { _id: ObjectId("6271202be5f6ad9fac25c641"),
+       name: 'Mohan',
+       Email: 'mohan2020@gmail.com',
+       uid: 9 } ] }
+{ _id: ObjectId("6273b5c5ff04e639c65093d9"),
+  cid: 6,
+  cname: 'dell',
+  uids: [ 1, 3, 5, 7, 9 ],
+  date: 2020-12-15T00:00:00.000Z,
+  res: 
+   [ { _id: ObjectId("62711d44e5f6ad9fac25c639"),
+       name: 'Krishna',
+       Email: 'krishna@gmail.com',
+       uid: 1 },
+     { _id: ObjectId("6271202be5f6ad9fac25c63b"),
+       name: 'Manali',
+       Email: 'manali@gmail.com',
+       uid: 3 },
+     { _id: ObjectId("6271202be5f6ad9fac25c63d"),
+       name: 'Dhiraj',
+       Email: 'dhiraj17@gmail.com',
+       uid: 5 },
+     { _id: ObjectId("6271202be5f6ad9fac25c63f"),
+       name: 'Shekhar',
+       Email: 'shekhar2234@gmail.com',
+       uid: 7 },
+     { _id: ObjectId("6271202be5f6ad9fac25c641"),
+       name: 'Mohan',
+       Email: 'mohan2020@gmail.com',
+       uid: 9 } ] }
+{ _id: ObjectId("6273b5c5ff04e639c65093da"),
+  cid: 7,
+  cname: 'flipkart',
+  uids: [ 2, 4, 6, 8, 10 ],
+  date: 2020-11-15T00:00:00.000Z,
+  res: 
+   [ { _id: ObjectId("62711f72e5f6ad9fac25c63a"),
+       name: 'Rohit',
+       Email: 'rohit@gmail.com',
+       uid: 2 },
+     { _id: ObjectId("6271202be5f6ad9fac25c63c"),
+       name: 'Radhika',
+       Email: 'radhika123@gmail.com',
+       uid: 4 },
+     { _id: ObjectId("6271202be5f6ad9fac25c63e"),
+       name: 'Pavitra',
+       Email: 'pavitra70@gmail.com',
+       uid: 6 },
+     { _id: ObjectId("6271202be5f6ad9fac25c640"),
+       name: 'Sai',
+       Email: 'Sai1230@gmail.com',
+       uid: 8 },
+     { _id: ObjectId("6271202be5f6ad9fac25c642"),
+       name: 'Sonali',
+       Email: 'sonali3434@gmail.com',
+       uid: 10 } ] }
+{ _id: ObjectId("6273b5c5ff04e639c65093db"),
+  cid: 8,
+  cname: 'amazon',
+  uids: [ 1, 2, 3, 4, 10 ],
+  date: 2020-11-22T00:00:00.000Z,
+  res: 
+   [ { _id: ObjectId("62711d44e5f6ad9fac25c639"),
+       name: 'Krishna',
+       Email: 'krishna@gmail.com',
+       uid: 1 },
+     { _id: ObjectId("62711f72e5f6ad9fac25c63a"),
+       name: 'Rohit',
+       Email: 'rohit@gmail.com',
+       uid: 2 },
+     { _id: ObjectId("6271202be5f6ad9fac25c63b"),
+       name: 'Manali',
+       Email: 'manali@gmail.com',
+       uid: 3 },
+     { _id: ObjectId("6271202be5f6ad9fac25c63c"),
+       name: 'Radhika',
+       Email: 'radhika123@gmail.com',
+       uid: 4 },
+     { _id: ObjectId("6271202be5f6ad9fac25c642"),
+       name: 'Sonali',
+       Email: 'sonali3434@gmail.com',
+       uid: 10 } ] }
+{ _id: ObjectId("6273b5c5ff04e639c65093dc"),
+  cid: 9,
+  cname: 'tcs',
+  uids: [ 1, 2, 3, 4, 8, 9, 10 ],
+  date: 2020-10-16T00:00:00.000Z,
+  res: 
+   [ { _id: ObjectId("62711d44e5f6ad9fac25c639"),
+       name: 'Krishna',
+       Email: 'krishna@gmail.com',
+       uid: 1 },
+     { _id: ObjectId("62711f72e5f6ad9fac25c63a"),
+       name: 'Rohit',
+       Email: 'rohit@gmail.com',
+       uid: 2 },
+     { _id: ObjectId("6271202be5f6ad9fac25c63b"),
+       name: 'Manali',
+       Email: 'manali@gmail.com',
+       uid: 3 },
+     { _id: ObjectId("6271202be5f6ad9fac25c63c"),
+       name: 'Radhika',
+       Email: 'radhika123@gmail.com',
+       uid: 4 },
+     { _id: ObjectId("6271202be5f6ad9fac25c640"),
+       name: 'Sai',
+       Email: 'Sai1230@gmail.com',
+       uid: 8 },
+     { _id: ObjectId("6271202be5f6ad9fac25c641"),
+       name: 'Mohan',
+       Email: 'mohan2020@gmail.com',
+       uid: 9 },
+     { _id: ObjectId("6271202be5f6ad9fac25c642"),
+       name: 'Sonali',
+       Email: 'sonali3434@gmail.com',
+       uid: 10 } ] }
+{ _id: ObjectId("6273b5c5ff04e639c65093dd"),
+  cid: 10,
+  cname: 'infosys',
+  uids: [ 9, 10 ],
+  date: 2020-10-27T00:00:00.000Z,
+  res: 
+   [ { _id: ObjectId("6271202be5f6ad9fac25c641"),
+       name: 'Mohan',
+       Email: 'mohan2020@gmail.com',
+       uid: 9 },
+     { _id: ObjectId("6271202be5f6ad9fac25c642"),
+       name: 'Sonali',
+       Email: 'sonali3434@gmail.com',
+       uid: 10 } ] }
+=======================================================================
+4> Find the number of problems solved by the user in codekata
+db.codekata.aggregate([
+    {
+        $lookup:{
+            from: 'users',
+            localField: 'uid',
+            foreignField: 'uid',
+            as: 'user_details'
+        }
+    },
+    {
+        $project: { 
+            'name' : '$user_details.name',
+            'prob_solved': '$prob_solved'
+        }
+    }
+]).pretty()
+
+
+o/p
+{ _id: ObjectId("6273a462ff04e639c65093c0"),
+  name: [ 'Krishna' ],
+  probSolved: 100 }
+{ _id: ObjectId("6273a462ff04e639c65093c1"),
+  name: [ 'Rohit' ],
+  probSolved: 120 }
+{ _id: ObjectId("6273a462ff04e639c65093c2"),
+  name: [ 'Manali' ],
+  probSolved: 200 }
+{ _id: ObjectId("6273a462ff04e639c65093c3"),
+  name: [ 'Radhika' ],
+  probSolved: 250 }
+{ _id: ObjectId("6273a462ff04e639c65093c4"),
+  name: [ 'Dhiraj' ],
+  probSolved: 300 }
+{ _id: ObjectId("6273a462ff04e639c65093c5"),
+  name: [ 'Pavitra' ],
+  probSolved: 400 }
+{ _id: ObjectId("6273a462ff04e639c65093c6"),
+  name: [ 'Shekhar' ],
+  probSolved: 110 }
+{ _id: ObjectId("6273a462ff04e639c65093c7"),
+  name: [ 'Sai' ],
+  probSolved: 125 }
+{ _id: ObjectId("6273a462ff04e639c65093c8"),
+  name: [ 'Mohan' ],
+  probSolved: 100 }
+{ _id: ObjectId("6273a462ff04e639c65093c9"),
+  name: [ 'Sonali' ],
+  probSolved: 100 }
+
+================================================================================================
+5>Find all the mentors with who has the mentee's count more than 15
+
+db.mentors.find({mcount:{$gt:15}});
+o/p:
+{ _id: ObjectId("62716546e5f6ad9fac25c688"),
+  mid: 2,
+  name: 'Mohan',
+  subject: 'css',
+  mcount: 16 }
+{ _id: ObjectId("62716546e5f6ad9fac25c689"),
+  mid: 3,
+  name: 'Shekhar',
+  subject: 'React',
+  mcount: 18 }
+{ _id: ObjectId("62716546e5f6ad9fac25c68b"),
+  mid: 5,
+  name: 'lakshman',
+  subject: 'c',
+  mcount: 16 }
+{ _id: ObjectId("62716546e5f6ad9fac25c68c"),
+  mid: 6,
+  name: 'Anupreet',
+  subject: 'c++',
+  mcount: 17 }
+{ _id: ObjectId("62716546e5f6ad9fac25c68d"),
+  mid: 7,
+  name: 'Akbar',
+  subject: 'Javascript',
+  mcount: 18 }
+=============================================================
+6>Find the number of users who are absent and task is not submitted  between 15 oct-2020 and 31-oct-2020
+
+db.attendance.aggregate([
+    {
+        $lookup:{
+            from: 'tasks',
+            localField: 'uid',
+            foreignField: 'uid',
+            as: 'userTasks'
+        }
+    },
+    {
+        $match: {
+            'tasks.sub_date': {
+                $gte: ISODate("2020-10-15T00:00:00Z"),
+                $lte: ISODate("2020-11-01T00:00:00Z"),
+            },
+            'status': 'Absent'
+        }
+    },
+    {
+        $lookup: {
+            from: 'users',
+            localField: 'uid',
+            foreignField: 'uid',
+            as: 'userDetails'
+
+        }
+    },
+    {
+        $project: {
+            'userDetails': {
+                $arrayElemAt: ["$usersDetails", 0]
+            },
+            'taskDetails': {
+                $arrayElemAt: ["$userTasks", 0]
+            },
+            'status': 1
+        }
+    },
+    {
+        $project: {
+            'name': "$userDetails.name",
+            'tname': '$tasks.tname',
+            'status': 1,
+            'sub_date': '$tasks.sub_date',
+
+        }
+    }
+]).pretty()
